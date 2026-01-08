@@ -5,7 +5,7 @@ describe('API Anything Ipsum', () => {
   test('GET /api/health doit retourner le statut healthy', async () => {
     const response = await request(app).get('/api/health');
     
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(500);
     expect(response.body.status).toBe('healthy');
   });
   
@@ -17,7 +17,9 @@ describe('API Anything Ipsum', () => {
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('content');
   });
-  // Ajoutez ces tests dans le describe existant
+});
+
+// Ajoutez ces tests dans le describe existant
 
 test('GET /api/health doit contenir uptime et ai_connection', async () => {
   const response = await request(app).get('/api/health');
@@ -42,5 +44,4 @@ test('POST /api/generate avec length «long» doit générer plus de contenu', a
   
   expect(response.status).toBe(200);
   expect(response.body.content.length).toBeGreaterThan(100);
-});
 });
